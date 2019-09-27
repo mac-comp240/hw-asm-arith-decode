@@ -1,56 +1,18 @@
 # Decoding Arithmetic Expressions from Assembly Code
 
-You will be creating a file called `hw3_arith.c`, which can be built from the
-given Makefile to create the following complete assembly file:
+You will be creating a C file called `hw3_arith.c`, which can be built from the
+given Makefile to match the assembly file `hw3_arith_complete.s`, which is
+provided. In particular, you goal is to fill in three C functions that perform
+arithmetic operations, such that your C code compiles to the same assembly code
+as in the provided assembly file.
 
-```hw3_arith_complete.s
-	.file	"hw3_arith.c"
-	.text
-	.globl	arith1
-	.type	arith1, @function
-arith1:
-.LFB0:
-	.cfi_startproc
-	addq	%rdx, %rdi
-	movq	%rsi, %rax
-	subq	%rdi, %rax
-	salq	$6, %rsi
-	addq	%rsi, %rax
-	ret
-	.cfi_endproc
-.LFE0:
-	.size	arith1, .-arith1
-	.globl	arith2
-	.type	arith2, @function
-arith2:
-.LFB1:
-	.cfi_startproc
-	movslq	%edi, %rax
-	imulq	%rdx, %rax
-	subq	$88, %rax
-	imulq	%rsi, %rax
-	ret
-	.cfi_endproc
-.LFE1:
-	.size	arith2, .-arith2
-	.globl	arith3
-	.type	arith3, @function
-arith3:
-.LFB2:
-	.cfi_startproc
-	movzbl	%dil, %edi
-	movzbl	%sil, %esi
-	addl	%edi, %esi
-	movl	%esi, %eax
-	sall	$7, %eax
-	addl	%esi, %eax
-	ret
-	.cfi_endproc
-.LFE2:
-	.size	arith3, .-arith3
-	.ident	"GCC: (Ubuntu 4.8.4-2ubuntu1~14.04.3) 4.8.4"
-	.section	.note.GNU-stack,"",@progbits
-```
+## Expectations for Code
+
+This example is fairly simple, so the only thing that you need to do is comment
+your code file with a header that contains your name.
+
+No extensive testing needed here--just devise the C code that compiles to the
+given assembly.
 
 ## Important Notes
 
@@ -60,12 +22,11 @@ arith3:
 
 - Casting is used in some of these functions to widen variables. Make certain you use explicit casting, not implicit casting.
 
-
-## A convenience for checking your work
+## Check Your Work
 
 The makefile has a way to check how your work is progressing.  This will only
-work once you have created your `hw3_arith.c` file and compiled it with make to
-create a `hw3_arith.s` file Type:
+work once you have created your `hw3_arith.c` file and compiled it with `make`
+to create a `hw3_arith.s` file Type:
 
 	make compare
 
@@ -108,9 +69,3 @@ make: *** [compare] Error 1
 ```
 
 If you are curious, your can type `man diff` to find out more about this new linux command, or look up more about it by doing a web search.
-
-## Expectations for code
-
-This example is fairly simple, so the only thing that you need to do is comment your code file with a header that contains your name.
-
-No extensive testing needed here, of course- just devise the C code that compiles to the above assembly.
