@@ -1,13 +1,13 @@
-	.file	"hw3_arith.c"
+.file	"hw3_arith.c"
 	.text
 	.globl	arith1
 	.type	arith1, @function
 arith1:
 .LFB0:
 	.cfi_startproc
-	addq	%rdx, %rdi
+	addq	%rdi, %rdx
 	movq	%rsi, %rax
-	subq	%rdi, %rax
+	subq	%rdx, %rax
 	salq	$6, %rsi
 	addq	%rsi, %rax
 	ret
@@ -19,9 +19,10 @@ arith1:
 arith2:
 .LFB1:
 	.cfi_startproc
-	movslq	%edi, %rax
-	imulq	%rdx, %rax
-	subq	$88, %rax
+	movslq	%edi, %rdi
+	imulq	%rdx, %rdi
+	movl	$5, %eax
+	subq	%rdi, %rax
 	imulq	%rsi, %rax
 	ret
 	.cfi_endproc
@@ -33,14 +34,14 @@ arith3:
 .LFB2:
 	.cfi_startproc
 	movzbl	%dil, %edi
-	movzbl	%sil, %esi
-	addl	%edi, %esi
-	movl	%esi, %eax
-	sall	$7, %eax
-	addl	%esi, %eax
+	movzbl	%sil, %eax
+	addl	%edi, %eax
+	movl	%eax, %edi
+	sall	$7, %edi
+	addl	%edi, %eax
 	ret
 	.cfi_endproc
 .LFE2:
 	.size	arith3, .-arith3
-	.ident	"GCC: (Ubuntu 4.8.4-2ubuntu1~14.04.3) 4.8.4"
+	.ident	"GCC: (Ubuntu 8.3.0-6ubuntu1) 8.3.0"
 	.section	.note.GNU-stack,"",@progbits
