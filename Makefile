@@ -10,5 +10,5 @@ clean:
 	rm hw3_arith.s
 
 compare:
-	diff hw3_arith.s hw3_arith_complete.s
+	diff -I '.ident*' hw3_arith.s hw3_arith_complete.s
   
