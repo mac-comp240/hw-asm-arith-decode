@@ -36,7 +36,7 @@ When you have everything correct, you will get nothing returned when you type
 the above `make compare` command. When things are different between your .s and
 the completed one, you may get something like this:
 
-	diff hw3_arith.s hw3_arith_complete.s
+	diff -I '.ident*' hw3_arith.s hw3_arith_complete.s
 	14c14
 	<       addl    %rdi, %rdx
 	---
@@ -48,7 +48,7 @@ Lines with a < in front of them are from your file and lines with a > in front o
 When a whole function is still missing as you work, you should see something like this, example, where arith3 is not completed yet:
 
 ```
-	diff hw3_arith.s hw3_arith_complete.s
+	diff -I '.ident*' hw3_arith.s hw3_arith_complete.s
 29a30,44
 >       .globl  arith3
 >       .type   arith3, @function
