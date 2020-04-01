@@ -1,14 +1,14 @@
 CC=gcc
 CFLAGS=-Og -m64 -S
 
-all: hw3_arith.s
+all: arith.s
 
-hw3_arith.s: hw3_arith.c
-	${CC} ${CFLAGS} hw3_arith.c
+arith.s: arith.c
+	${CC} ${CFLAGS} arith.c
 
 clean:
-	rm hw3_arith.s
+	rm arith.s
 
 compare:
-	diff -b -B -I '.ident*' -I '.file*' hw3_arith.s hw3_arith_complete.s
+	diff -b -B -I '.ident*' -I '.file*' arith.s arith_complete.s
   

@@ -1,4 +1,4 @@
-.file	"hw3_arith.c"
+	.file	"arith.c"
 	.text
 	.globl	arith1
 	.type	arith1, @function
@@ -21,8 +21,7 @@ arith2:
 	.cfi_startproc
 	movslq	%edi, %rdi
 	imulq	%rdx, %rdi
-	movl	$5, %eax
-	subq	%rdi, %rax
+	leaq	-88(%rdi), %rax
 	imulq	%rsi, %rax
 	ret
 	.cfi_endproc
@@ -43,5 +42,5 @@ arith3:
 	.cfi_endproc
 .LFE2:
 	.size	arith3, .-arith3
-	.ident	"GCC: (Ubuntu 8.3.0-6ubuntu1) 8.3.0"
+	.ident	"GCC: (GNU) 8.3.1 20190311 (Red Hat 8.3.1-3)"
 	.section	.note.GNU-stack,"",@progbits
