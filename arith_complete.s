@@ -5,11 +5,14 @@
 arith1:
 .LFB0:
 	.cfi_startproc
-	addq	%rdi, %rdx
-	movq	%rsi, %rax
+	addq	%rsi, %rdx
+	movq	%rdi, %rax
 	subq	%rdx, %rax
-	salq	$6, %rsi
-	addq	%rsi, %rax
+	movq	%rax, %rdx
+	salq	$4, %rdi
+	sarq	$5, %rax
+	addq	%rdi, %rdx
+	addq	%rdx, %rax
 	ret
 	.cfi_endproc
 .LFE0:
@@ -19,10 +22,10 @@ arith1:
 arith2:
 .LFB1:
 	.cfi_startproc
-	movslq	%edi, %rdi
-	imulq	%rdx, %rdi
-	leaq	-88(%rdi), %rax
-	imulq	%rsi, %rax
+	addq	%rsi, %rdx
+	movslq	%edi, %rax
+	addq	%rdx, %rax
+	salq	$2, %rax
 	ret
 	.cfi_endproc
 .LFE1:
@@ -36,7 +39,7 @@ arith3:
 	movzbl	%sil, %eax
 	addl	%edi, %eax
 	movl	%eax, %edi
-	sall	$7, %edi
+	sall	$4, %edi
 	addl	%edi, %eax
 	ret
 	.cfi_endproc

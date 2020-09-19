@@ -32,9 +32,14 @@ to create a `arith.s` file. Type:
 
 This runs a unix command called diff that can compare 2 files. There is a
 complete version of the expected assembly code called `arith_complete.s`.
-When you have everything correct, you will get nothing returned when you type
-the above `make compare` command. When things are different between your .s and
-the completed one, you may get something like this:
+When you have everything correct, when you type the above `make compare` command, he diff command that runs will appear and return with no output. It will run like this:
+
+	$ make compare
+	diff -b -B -I '.ident*' -I '.file*' arith.s arith_complete.s
+
+
+When things are different between your .s and
+the completed one, you may get something like this (your will be different):
 
 	diff -I '.ident*' arith.s arith_complete.s
 	14c14
@@ -45,7 +50,7 @@ the completed one, you may get something like this:
 	
 Lines with a < in front of them are from your file and lines with a > in front of them are corresponding lines in the correct complete version.
 
-When a whole function is still missing as you work, you should see something like this, example, where arith3 is not completed yet:
+When a whole function is still missing as you work, you should see something like this example (this is only an example, yours will be different), where arith3 is not completed yet:
 
 ```
 diff -b -B -I '.ident*' -I '.file*' arith.s arith_complete.s
