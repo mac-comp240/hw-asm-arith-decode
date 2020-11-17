@@ -1,32 +1,42 @@
 # Decoding Arithmetic Expressions from Assembly Code
 
-You will be creating a C file called `arith.c`, which can be built from the
-given Makefile to match the assembly file `arith_complete.s`, which is
-provided. In particular, you goal is to fill in three C functions that perform
-arithmetic operations, such that your C code compiles to the same assembly code
-as in the provided assembly file.
+You will be creating a C file called `arith.c`, which can be built from the given Makefile to match the assembly file `arith_complete.s`, which is provided. In particular, you goal is to fill in three C functions that perform arithmetic operations, such that your C code compiles to the same assembly code as in the provided assembly file.
 
 ## Expectations for Code
 
-This example is fairly simple, so the only thing that you need to do is comment
-your code file with a header that contains your name.
+This example is fairly simple, so the only thing that you need to do is comment your code file with a header that contains your name.
 
-No extensive testing needed here--just devise the C code that compiles to the
-given assembly.
+No extensive testing needed here--just devise the C code that compiles to the given assembly.
+
+## Tips for making progress
+
+- As you have done in activities, make a copy of the arith_complete.s file. Then use that copy to make comments on each line so that you can build a picture.
+
+- In your comments, remember to note exactly what is in the register that is the destination (the second operand).
+
+- The registers that are used as the source (the first operand) of an instruction help you to determine that the register may be coming from a parameter to the function.
+
+- Work in stages: finish function *arith1* in your `arith.c` file. Then move on to function *arith2* and then *arith3*. If you are stuck on one, work on another and go back.
 
 ## Important Notes
 
-- Work in stages: finish function *arith1* in your `arith.c` file. Then move on to function *arith2* and then *arith3*.
+- The code in the assembly should **NOT** be converted line-for-line into C code. The original functions use fairly readable C code with arithmetic expressions in them. 
 
-- The function *arith1* should contain the multiplication operator in one and only one expression in your code. It has no shift operators.
+- The C code is like some of the examples that you have seen, in that it creates intermediate variables called, t0, t1, t2, etc. and combines them into a final returned value. Try using intermediate values rather than creating one long expression.
+
+- In the solution, the assignment statements contain expressions on the right-hand side that have 1 or two variables, which are either input parameters to the function or the temporary intermediate variables. Avoid combining expressions in the assignments or the return statement. However, do be sure to combine variables in the expression: each variable should occur once per expression on the right-hand side of an assignment.
+
+- There are no **left** shift operators in any examples.
+
+- The mov command is sometimes used to keep a copy of a variable for use later.
+
+- The registers rdi, rsi, and rdx are sometimes re-used after a computed intermediate value (i.e. a t0, t1, etc.) is completed.
 
 - Casting is used in some of these functions to widen variables. Make certain you use explicit casting, not implicit casting.
 
 ## Check Your Work
 
-The makefile has a way to check how your work is progressing.  This will only
-work once you have created your `arith.c` file and compiled it with `make`
-to create a `arith.s` file. Type:
+The makefile has a way to check how your work is progressing.  This will only work once you have created your `arith.c` file and compiled it with `make` to create a `arith.s` file. Type:
 
 	make compare
 
@@ -39,7 +49,7 @@ When you have everything correct, when you type the above `make compare` command
 
 
 When things are different between your .s and
-the completed one, you may get something like this (your will be different):
+the completed one, you may get something like this (yours will be different):
 
 	diff -I '.ident*' arith.s arith_complete.s
 	14c14
