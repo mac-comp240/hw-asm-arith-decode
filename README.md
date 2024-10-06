@@ -84,12 +84,12 @@ diff -b -B -I '.ident*' -I '.file*' arith.s arith_complete.s
 When there are differences between `arith.s` and `arith_complete.s`, you may get
 something like this:
 ```
-	diff -I '.ident*' arith.s arith_complete.s
-	14c14
-	<       addl    %rdi, %rdx
-	---
-	>       addq    %rdi, %rdx
-	make: *** [compare] Error 1
+diff -I '.ident*' arith.s arith_complete.s
+14c14
+<       addl    %rdi, %rdx
+---
+>       addq    %rdi, %rdx
+make: *** [compare] Error 1
 ```	
 
 Interpreting what is printed above: It is comparing line 14 from both files. The
