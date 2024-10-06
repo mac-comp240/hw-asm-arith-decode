@@ -1,6 +1,18 @@
 # Decoding Arithmetic Expressions from Assembly Code
 
+## Overview
+
+The goal of this assignment is to practice the mapping between C code and assembly, for arithmetic expressions. 
+You can easily convert C code into assembly using the `gcc`. Here, you will need to read and understand assembly code that
+implements functions that perform arithmetic calculations, and your goal is to create C code that generates **identical assembly!**
+
+### Rubric
+
 You will be creating a C file called `arith.c`, which can be built from the given Makefile to match the assembly file `arith_complete.s`, which is provided. In particular, you goal is to fill in three C functions that perform arithmetic operations, such that your C code compiles to the same assembly code as in the provided assembly file.
+
+### Starter Files
+
+* 
 
 ## Expectations for Code
 
